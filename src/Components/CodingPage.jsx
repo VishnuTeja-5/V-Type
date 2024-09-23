@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
+import axios from 'axios';
 import CodeEditorWindow from './CodeEditorWindow';
-import {LanguageDropdown, ThemeDropdown} from './index';
+import {LanguageDropdown, ThemeDropdown, OutputWindow, InputWindow} from './index';
 import { languageOptions } from '../data/languages';
 import {defineTheme} from '../utils/defineTheme';
 
@@ -9,6 +10,9 @@ const CodingPage = () => {
   const [code, setCode] = useState();
   const [language, setLanguage] = useState(languageOptions[0]);
   const [theme, setTheme] = useState();
+  const [customInput, setCustomInput] = useState("");
+  const [outputDetails, setOutputDetails] = useState(null);
+  const [processing, setProcessing] = useState(null);
 
   const onSelectChange = (lang) => setLanguage(lang);
 
@@ -31,6 +35,76 @@ const CodingPage = () => {
       }
     }
   };
+
+  const handleCompile = () => {
+    setProcessing(true);
+    const formData = {
+      language_id: language.id,
+      // encode source code in base64
+      source_code: btoa(code),
+      stdin: btoa(customInput),
+    };
+    const options = {
+      method: "POST",
+      url: import.meta.env.VITE_RAPID_API_URL,
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        "content-type": "application/json",
+        "Content-Type": "application/json",
+        "X-RapidAPI-Host": import.meta.env.VITE_RAPID_API_HOST,
+        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+      },
+      data: formData,
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log("res.data", response.data);
+        const token = response.data.token;
+        checkStatus(token);
+      })
+      .catch((err) => {
+        let error = err.response ? err.response.data : err;
+        setProcessing(false);
+        console.log(error);
+      });
+  };
+
+  const checkStatus = async (token) => {
+    const options = {
+      method: "GET",
+      url: import.meta.env.VITE_RAPID_API_URL + "/" + token,
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        "X-RapidAPI-Host": import.meta.env.VITE_RAPID_API_HOST,
+        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+      },
+    };
+    try {
+      let response = await axios.request(options);
+      let statusId = response.data.status?.id;
+
+      // Processed - we have a result
+      if (statusId === 1 || statusId === 2) {
+        // still processing
+        setTimeout(() => {
+          checkStatus(token)
+        }, 2000)
+        return
+      } else {
+        setProcessing(false)
+        setOutputDetails(response.data)
+        // showSuccessToast(`Compiled Successfully!`)
+        console.log('response.data', response.data)
+        return
+      }
+    } catch (err) {
+      console.log("err", err);
+      setProcessing(false);
+      // showErrorToast();
+    }
+  };
   
   return (
     <div className='w-full h-full flex flex-col gap-2 lg:grid lg:grid-cols-12 lg:gap-2'>
@@ -38,7 +112,12 @@ const CodingPage = () => {
       <div className='w-full px-5 py-2 flex justify-around'>
         <LanguageDropdown onSelectChange = {onSelectChange}/>
         <ThemeDropdown onThemeChange={onThemeChange} theme={theme} />
-        <button className='w-20 rounded-md flex justify-center items-center text-emerald-500 border border-teal-900 hover:bg-gradient-to-tr hover:from-teal-900 hover:to-cyan-950 backdrop-blur-sm bg-opacity-50 duration-300 hover:scale-110'>Run</button>
+        <button 
+          className='w-20 flex justify-center items-center border rounded-lg border-cyan-900 p-2 text-teal-600 bg-slate-800 backdrop-blur-sm bg-opacity-35 hover:scale-[1.15] duration-[250ms] hover:bg-gradient-to-tr hover:from-teal-900 hover:to-cyan-950 hover:backdrop-blur-sm hover:bg-opacity-35'
+          onClick={handleCompile}
+          disabled={!code}
+          >{processing ? "Running..." : "Run"}
+        </button>
         
       </div>
       <CodeEditorWindow 
@@ -49,11 +128,10 @@ const CodingPage = () => {
       
     </div>
     <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-emerald-800 rounded-lg bg-emerald-950 backdrop-blur-sm bg-opacity-40 lg:col-start-9 lg:col-end-13'>
-        <div className='w-full min-h-48 h-full bg-black text-white px-4 py-2'>
-          Custom Input
-        </div>
-        <div className='w-full min-h-48 h-full bg-black text-white px-4 py-2'>
-          Output
+        <div className='w-full h-full flex flex-col items-center py-4'>
+        <InputWindow customInput={customInput} setCustomInput={setCustomInput} />
+        
+        <OutputWindow outputDetails={outputDetails} />
         </div>
       </div>
     </div>
