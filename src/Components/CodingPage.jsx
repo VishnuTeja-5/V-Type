@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
 import CodeEditorWindow from './CodeEditorWindow';
-import {LanguageDropdown, ThemeDropdown, OutputWindow, InputWindow} from './index';
+import {LanguageDropdown, ThemeDropdown, OutputWindow, InputWindow, OutputStatus} from './index';
 import { languageOptions } from '../data/languages';
 import {defineTheme} from '../utils/defineTheme';
 
@@ -109,7 +109,7 @@ const CodingPage = () => {
   return (
     <div className='w-full h-full flex flex-col gap-2 lg:grid lg:grid-cols-12 lg:gap-2'>
     <div className='text-emerald-600 flex flex-col justify-center items-center p-3 border border-emerald-800 rounded-lg bg-emerald-950 backdrop-blur-sm bg-opacity-40 lg:col-start-1 lg:col-end-9'>
-      <div className='w-full px-5 py-2 flex justify-around'>
+      <div className='w-full px-5 py-2 flex flex-wrap justify-around gap-2'>
         <LanguageDropdown onSelectChange = {onSelectChange}/>
         <ThemeDropdown onThemeChange={onThemeChange} theme={theme} />
         <button 
@@ -125,10 +125,11 @@ const CodingPage = () => {
           onChange={onChange}
           language={language?.value}
           theme={theme?.value}/>
-      
+      <OutputStatus outputDetails={outputDetails}/>
+
     </div>
     <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-emerald-800 rounded-lg bg-emerald-950 backdrop-blur-sm bg-opacity-40 lg:col-start-9 lg:col-end-13'>
-        <div className='w-full h-full flex flex-col items-center py-4'>
+      <div className='w-full h-full flex flex-col items-center py-4'>
         <InputWindow customInput={customInput} setCustomInput={setCustomInput} />
         
         <OutputWindow outputDetails={outputDetails} />

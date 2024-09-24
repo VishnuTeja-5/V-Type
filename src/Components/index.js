@@ -6,6 +6,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import ThemeDropdown from "./ThemeDropdown";
 import OutputWindow from "./OutputWindow";
 import InputWindow from "./InputWindow";
+import OutputStatus from "./OutputStatus";
 
 export {
     CodeEditorWindow,
@@ -16,4 +17,5 @@ export {
     ThemeDropdown,
     OutputWindow,
     InputWindow,
+    OutputStatus,
 }
