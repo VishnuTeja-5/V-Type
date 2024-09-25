@@ -4,6 +4,6 @@
 
 @layer base{
     html{
-        @apply bg-gradient-to-r from-gray-950 to-emerald-950;
+        @apply bg-black;
     }
 }

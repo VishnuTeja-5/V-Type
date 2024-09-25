@@ -36,10 +36,10 @@ const OutputWindow = ({ outputDetails }) => {
     return (
       <>
       <div className='w-full h-full flex flex-col'>
-        <h1 className="font-bold text-xl bg-clip-text text-transparent bg-emerald-500 mb-2">
+        <h1 className="font-bold text-xl bg-clip-text text-transparent bg-teal-500 mb-2">
           Output
         </h1>
-        <div className="w-full min-h-56 h-full bg-black rounded-md text-white font-normal text-sm overflow-y-auto border-2 border-emerald-700">
+        <div className="w-full min-h-56 h-full bg-black rounded-md text-white font-normal text-sm overflow-y-auto border border-gray-800">
           {outputDetails ? <>{getOutput()}</> : null}
         </div>
         </div>

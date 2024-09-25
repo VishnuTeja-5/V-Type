@@ -7,7 +7,7 @@ const TextTyping = () => {
       
       <TypeAnimation
       sequence={['Java', 650, 'Python', 650, 'JavaScript', 650, 'Ruby', 650]}
-      style={{ color: '#34d399' }}
+      style={{ color: '#2dd4bf', textShadow : '0px 0px 10px #075985', }}
       repeat={Infinity}
       speed={20}
 />

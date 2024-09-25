@@ -108,12 +108,12 @@ const CodingPage = () => {
   
   return (
     <div className='w-full h-full flex flex-col gap-2 lg:grid lg:grid-cols-12 lg:gap-2'>
-    <div className='text-emerald-600 flex flex-col justify-center items-center p-3 border border-emerald-800 rounded-lg bg-emerald-950 backdrop-blur-sm bg-opacity-40 lg:col-start-1 lg:col-end-9'>
+    <div className='text-emerald-600 flex flex-col justify-center items-center p-3 border border-gray-800 rounded-lg bg-gray-950 backdrop-blur-lg bg-opacity-40 lg:col-start-1 lg:col-end-9'>
       <div className='w-full px-5 py-2 flex flex-wrap justify-around gap-2'>
         <LanguageDropdown onSelectChange = {onSelectChange}/>
         <ThemeDropdown onThemeChange={onThemeChange} theme={theme} />
         <button 
-          className='w-20 flex justify-center items-center border rounded-lg border-cyan-900 p-2 text-teal-600 bg-slate-800 backdrop-blur-sm bg-opacity-35 hover:scale-[1.15] duration-[250ms] hover:bg-gradient-to-tr hover:from-teal-900 hover:to-cyan-950 hover:backdrop-blur-sm hover:bg-opacity-35'
+          className='w-20 flex justify-center items-center border rounded-lg border-teal-800 p-2 text-teal-600 bg-gray-900 backdrop-blur-sm bg-opacity-35 hover:scale-[1.1] duration-[350ms] hover:text-cyan-400 hover:border-emerald-400 hover:bg-gradient-to-tr hover:from-teal-900 hover:to-sky-900 hover:opacity-70 hover:backdrop-blur-sm hover:bg-opacity-5'
           onClick={handleCompile}
           disabled={!code}
           >{processing ? "Running..." : "Run"}
@@ -128,7 +128,7 @@ const CodingPage = () => {
       <OutputStatus outputDetails={outputDetails}/>
 
     </div>
-    <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-emerald-800 rounded-lg bg-emerald-950 backdrop-blur-sm bg-opacity-40 lg:col-start-9 lg:col-end-13'>
+    <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-gray-800 rounded-lg bg-gray-950 backdrop-blur-lg bg-opacity-40 lg:col-start-9 lg:col-end-13'>
       <div className='w-full h-full flex flex-col items-center py-4'>
         <InputWindow customInput={customInput} setCustomInput={setCustomInput} />
         

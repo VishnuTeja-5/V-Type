@@ -7,6 +7,12 @@ import ThemeDropdown from "./ThemeDropdown";
 import OutputWindow from "./OutputWindow";
 import InputWindow from "./InputWindow";
 import OutputStatus from "./OutputStatus";
+import Bullets from "./Bullets";
+import Features from "./Features";
+import ButtonGradient from "./ButtonGradient";
+import Button from "./Button";
+import Vortex from "./Vortex";
+import VortexDemo from "./VortexDemo";
 
 export {
     CodeEditorWindow,
@@ -18,4 +24,10 @@ export {
     OutputWindow,
     InputWindow,
     OutputStatus,
+    Bullets,
+    Features,
+    Button,
+    ButtonGradient,
+    Vortex,
+    VortexDemo,
 }
