@@ -107,8 +107,8 @@ const CodingPage = () => {
   };
   
   return (
-    <div className='w-full h-full flex flex-col gap-2 lg:grid lg:grid-cols-12 lg:gap-2'>
-    <div className='text-emerald-600 flex flex-col justify-center items-center p-3 border border-gray-800 rounded-lg bg-gray-950 backdrop-blur-lg bg-opacity-40 lg:col-start-1 lg:col-end-9'>
+    <div className='w-full h-full flex flex-col lg:grid lg:grid-cols-12 bg-img'>
+    <div className='text-emerald-600 flex flex-col justify-center items-center p-3 border border-gray-800 bg-gray-950 backdrop-blur-sm bg-opacity-40 lg:col-start-1 lg:col-end-9'>
       <div className='w-full px-5 py-2 flex flex-wrap justify-around gap-2'>
         <LanguageDropdown onSelectChange = {onSelectChange}/>
         <ThemeDropdown onThemeChange={onThemeChange} theme={theme} />
@@ -128,7 +128,7 @@ const CodingPage = () => {
       <OutputStatus outputDetails={outputDetails}/>
 
     </div>
-    <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-gray-800 rounded-lg bg-gray-950 backdrop-blur-lg bg-opacity-40 lg:col-start-9 lg:col-end-13'>
+    <div className='w-full h-full flex flex-col items-center gap-5 px-4 py-3 border border-gray-800 bg-gray-950 backdrop-blur-sm bg-opacity-40 lg:col-start-9 lg:col-end-13'>
       <div className='w-full h-full flex flex-col items-center py-4'>
         <InputWindow customInput={customInput} setCustomInput={setCustomInput} />
         
