@@ -5,20 +5,20 @@ const OutputStatus = ({ outputDetails }) => {
     <div className="w-full metrics-container flex flex-wrap justify-around">
       <p className="text-sm">
         Status:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-900 bg-opacity-60">
+        <span className="font-semibold px-2 py-1 rounded-md bg-gray-800 bg-opacity-80">
           {outputDetails?.status?.description}
         </span>
       </p>
       <p className="text-sm">
         Memory:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-900 bg-opacity-60">
-          {outputDetails?.memory}
+        <span className="font-semibold px-2 py-1 rounded-md bg-gray-800 bg-opacity-80">
+          {outputDetails?.memory}&nbsp; KB
         </span>
       </p>
       <p className="text-sm">
         Time:{" "}
-        <span className="font-semibold px-2 py-1 rounded-md bg-gray-900 bg-opacity-60">
-          {outputDetails?.time}
+        <span className="font-semibold px-2 py-1 rounded-md bg-gray-800 bg-opacity-80">
+          {outputDetails?.time} sec
         </span>
       </p>
     </div>

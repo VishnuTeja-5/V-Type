@@ -13,11 +13,11 @@ const LanguageDropdown = ({onSelectChange}) => {
             unstyled
             classNames={{
                 input: () => "[&_input:focus]:ring-0",
-                control: () => " bg-gray-900 px-3 rounded-lg text-emerald-500 hover:cursor-pointer min-w-[8rem]",
+                control: () => " bg-gray-900 backdrop-blur-sm bg-opacity-70 px-3 rounded-lg text-emerald-500 hover:cursor-pointer min-w-[8rem]",
                 menu: () => "bg-gray-950 backdrop-blur-[3px] bg-opacity-20 ",
                 option: ({ isFocused, isSelected }) =>
                   clsx(
-                    " p-2 ",
+                    " p-2 text-emerald-500",
                     isFocused && `hover:cursor-pointer 
                         hover:bg-teal-900  hover:backdrop-blur-[2px] hover:bg-opacity-70
                         p-2 rounded hover:text-emerald-300`,

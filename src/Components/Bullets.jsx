@@ -27,7 +27,7 @@ const Bullets = ({children, delay}) => {
         stiffness: 100,
       }}
         initial="hidden"
-        whileInView="visible"
+        
         animate={controls}
         className='w-full'
     >
