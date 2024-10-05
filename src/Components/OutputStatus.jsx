@@ -12,13 +12,13 @@ const OutputStatus = ({ outputDetails }) => {
       <p className="text-sm">
         Memory:{" "}
         <span className="font-semibold px-2 py-1 rounded-md bg-gray-800 bg-opacity-80">
-          {outputDetails?.memory}&nbsp; KB
+          {outputDetails?.memory}
         </span>
       </p>
       <p className="text-sm">
         Time:{" "}
         <span className="font-semibold px-2 py-1 rounded-md bg-gray-800 bg-opacity-80">
-          {outputDetails?.time} sec
+          {outputDetails?.time}
         </span>
       </p>
     </div>
