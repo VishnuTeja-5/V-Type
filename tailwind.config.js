@@ -11,7 +11,7 @@ export default {
         // => @media (min-width: 576px) { ... }
       },
       backgroundImage:{
-        'img': "url('./images/background.jpg')",
+        'img': "url('/images/background.jpg')",
       }
     },
   },

@@ -12,8 +12,7 @@ const router = createBrowserRouter(
       <Route path='code' element = {<CodingPage />} />
       <Route path='*' element = {<div className='text-white'>Page Not Found</div>} />
     </Route>
-  ),
-  { basename: '/V-Type/' }
+  )
 );
 
 createRoot(document.getElementById('root')).render(
