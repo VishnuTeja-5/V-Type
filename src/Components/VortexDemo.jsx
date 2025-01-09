@@ -26,7 +26,7 @@ function VortexDemo() {
                 <Button />
             </div>
             <div className='w-full h-full p-2 border-collapse rounded-b-lg bg-zinc-950 bg-opacity-30 flex justify-center items-center lg:col-start-6 lg:col-end-13 lg:rounded-tr-lg lg:rounded-bl-none'>
-                <img className='p-4 bg-transparent w-[85%] lg:w-full' src='./public/images/editor.gif' alt='editor img' />
+                <img className='p-4 bg-transparent w-[85%] lg:w-full' src='./images/editor.gif' alt='editor img' />
             </div>
         </div>
       </Vortex>
