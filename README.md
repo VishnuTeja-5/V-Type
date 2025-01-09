@@ -1,6 +1,6 @@
 # V-Type
 
-![V-type logo](/public/Logo.png)
+![V-type logo](/public/images/Logo.png)
 
 ## *Introduction*
 
